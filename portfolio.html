@@ -1059,6 +1059,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            cursor: pointer;
+            border: none;
         }
 
         .resume-btn:hover {
@@ -1694,9 +1696,9 @@
                             <a href="https://github.com/nareshv" target="_blank">github.com/nareshv</a>
                         </div>
                         <div class="resume-download">
-                            <a href="Naresh Resume.pdf" class="resume-btn" download>
+                            <button onclick="downloadResume()" class="resume-btn">
                                 <i class="fas fa-download"></i> Download Resume
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1869,6 +1871,22 @@
             
             img.src = screenshotsArray[currentIndices[modalId]];
             counter.textContent = `${currentIndices[modalId] + 1} of ${screenshotsArray.length}`;
+        }
+
+        // Resume download function
+        function downloadResume() {
+            // Create a hidden link element
+            const link = document.createElement('a');
+            link.href = 'Naresh Resume.pdf';
+            link.download = 'Naresh_V_Resume.pdf';
+            link.type = 'application/pdf';
+            
+            // Add to the document and trigger click
+            document.body.appendChild(link);
+            link.click();
+            
+            // Clean up
+            document.body.removeChild(link);
         }
 
         // Dark mode toggle
